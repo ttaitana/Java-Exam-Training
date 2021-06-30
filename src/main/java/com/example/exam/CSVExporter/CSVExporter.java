@@ -17,11 +17,11 @@ public class CSVExporter {
     public void createCSVFile(String employeeId, ArrayList<AlbumEntity> album)  throws IOException {
         try (
                 BufferedWriter writer = Files.newBufferedWriter(Paths.get(CSV_FILE));
-                CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("EmployeeId", "Id", "AlbumId", "Title", "Url", "ThumbnailUrl", "Error"));
+                CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("EmployeeId", "ThreadId", "Id", "AlbumId", "Title", "Url", "ThumbnailUrl", "Error"));
         ) {
             album.forEach(alb -> {
                 try {
-                    printer.printRecord(employeeId, alb.getId(), alb.getAlbumId(), alb.getTitle(), alb.getUrl(), alb.getThumbnailUrl());
+                    printer.printRecord(employeeId, alb.getThreadId(), alb.getId(), alb.getAlbumId(), alb.getTitle(), alb.getUrl(), alb.getThumbnailUrl());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

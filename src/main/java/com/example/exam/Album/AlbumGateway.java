@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 
 @Component
-public class AlbumGateway {
+public class AlbumGateway extends Thread{
     @Autowired
     private RestTemplate restTemplate;
 
@@ -20,7 +20,11 @@ public class AlbumGateway {
     public ArrayList<AlbumEntity> getAlbumsByRange(int start, int end){
         ArrayList<AlbumEntity> result = new ArrayList<>();
         for (int i = start; i < end; i++){
-            result.add(getAlbumById(i));
+            AlbumEntity res = getAlbumById(i);
+            res.setThreadId((int) currentThread().getId());
+            if(0 != res.getId()) {
+                result.add(getAlbumById(i));
+            }
         }
         return result;
     }

@@ -12,7 +12,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import java.util.ArrayList;
 
 @SpringBootApplication
-public class ExamApplication implements CommandLineRunner {
+public class ExamApplication implements CommandLineRunner{
 
 	@Autowired
 	AlbumGateway gateway;
@@ -29,7 +29,9 @@ public class ExamApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ArrayList<AlbumEntity> albums = gateway.getAlbumsByRange(2, 10);
-		exp.createCSVFile(args[0], albums);
+    	if(null != args[0]) {
+			ArrayList<AlbumEntity> albums = gateway.getAlbumsByRange(1, 250);
+			exp.createCSVFile(args[0], albums);
+		}
 	}
 }

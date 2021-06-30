@@ -6,6 +6,15 @@ public class AlbumEntity {
 	private String title;
 	private String url;
 	private String thumbnailUrl;
+	private int threadId;
+
+	public int getThreadId() {
+		return threadId;
+	}
+
+	public void setThreadId(int threadId) {
+		this.threadId = threadId;
+	}
 
 	public void setAlbumId(int albumId){
 		this.albumId = albumId;
