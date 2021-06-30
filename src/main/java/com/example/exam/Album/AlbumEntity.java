@@ -1,6 +1,6 @@
-package com.example.exam;
+package com.example.exam.Album;
 
-public class Album{
+public class AlbumEntity {
 	private int albumId;
 	private int id;
 	private String title;
