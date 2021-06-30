@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+
 @Component
 public class AlbumGateway {
     @Autowired
@@ -15,7 +17,11 @@ public class AlbumGateway {
         return album;
     }
 
-//    public AlbumEntity[] getAlbumsByRange(int start, int end){
-//        return []
-//    }
+    public ArrayList<AlbumEntity> getAlbumsByRange(int start, int end){
+        ArrayList<AlbumEntity> result = new ArrayList<>();
+        for (int i = start; i < end; i++){
+            result.add(getAlbumById(i));
+        }
+        return result;
+    }
 }

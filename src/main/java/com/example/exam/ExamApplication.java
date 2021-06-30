@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.ArrayList;
+
 @SpringBootApplication
 public class ExamApplication implements CommandLineRunner {
 
@@ -27,7 +29,7 @@ public class ExamApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		AlbumEntity album1 = gateway.getAlbumById(2);
-		exp.createCSVFile(album1);
+		ArrayList<AlbumEntity> albums = gateway.getAlbumsByRange(2, 10);
+		exp.createCSVFile(args[0], albums);
 	}
 }
