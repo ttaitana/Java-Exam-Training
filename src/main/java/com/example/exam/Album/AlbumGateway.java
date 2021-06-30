@@ -14,4 +14,8 @@ public class AlbumGateway {
         AlbumEntity album = restTemplate.getForObject(url, AlbumEntity.class);
         return album;
     }
+
+//    public AlbumEntity[] getAlbumsByRange(int start, int end){
+//        return []
+//    }
 }
